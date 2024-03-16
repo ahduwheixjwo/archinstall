@@ -2,8 +2,8 @@
 
 set -e
 
-efiPartition=512
-swapParttion=4
+efiPartition="512M"
+swapParttion="4G"
 
 partitioning() {
 
@@ -11,7 +11,7 @@ partitioning() {
     read -p ">>" efi
     echo ""
 
-    echo "Enter your preferred swap partition size (default: 4GB)."
+    echo "Enter your preferred swap partition size (default: 4G)."
     read -p ">>" swap
     echo ""
 
