@@ -32,4 +32,4 @@ if [[ ! -d /sys/firmware/efi ]]; then
 fi
 
 # Partitioning
-source $HOME/Scripts/partition.sh
+source $PWD/partition.sh
