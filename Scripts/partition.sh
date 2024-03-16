@@ -2,7 +2,7 @@
 
 set -e
 
-source variable.sh
+source $PWD/Scripts/variable.sh
 
 # list block of available disk
 lsblk
@@ -12,6 +12,7 @@ echo ""
 while true; do
     echo "Enter your preferred disk (ex: /dev/sda)"
     read -p ">>" disk
+    echo ""
 
     # Check if user's disk is existed
     if lsblk "$disk" >/dev/null 2>&1; then 
@@ -32,4 +33,4 @@ diskSize=$(lsblk $disk | grep disk | awk '{print $4}')
 partitioning $diskSize
 
 # Partition using fdisk utility
-printf g\nn\n\n\n+"$efiPartition"M\nn\n\n\n+"$swapPartition"G\nn\n\n\nt\n1\n1\nt\n2\n19\nw\n | fdisk "$disk" >/dev/null 2>&1
+printf "g\nn\n\n\n+"$efiPartition"M\nn\n\n\n+"$swapPartition"G\nn\n\n\nt\n1\n1\nt\n2\n19\nw\n" | fdisk "$disk" >/dev/null 2>&1
