@@ -16,7 +16,7 @@ connectInternet() {
 
 # Check for internet connection
 while true; do
-    if ping google.com > /dev/null 2>&1; then
+    if ping -c 3 google.com > /dev/null 2>&1; then
         break
     else
         connectInternet
