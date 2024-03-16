@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 efiPartition=512
 swapParttion=4
 

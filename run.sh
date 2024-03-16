@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/Scripts/checkError.sh
+set -e
 
 # Function
 connectInternet() {
@@ -33,4 +33,3 @@ fi
 
 # Partitioning
 source $HOME/Scripts/partition.sh
-checkError

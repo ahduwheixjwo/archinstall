@@ -1,7 +1,8 @@
 #!/bin/bash
 
+set -e
+
 source variable.sh
-source checkError.sh
 
 # list block of available disk
 lsblk
@@ -26,11 +27,9 @@ printf "x\nz\ny\ny\n" | gdisk "$disk" >/dev/null 2>&1
 
 # Variable for disk size
 diskSize=$(lsblk $disk | grep disk | awk '{print $4}')
-checkError
 
 # Customize each partition size
 partitioning $diskSize
-checkError
 
 # Partition using fdisk utility
 printf g\nn\n\n\n+"$efiPartition"M\nn\n\n\n+"$swapPartition"G\nn\n\n\nt\n1\n1\nt\n2\n19\nw\n | fdisk "$disk" >/dev/null 2>&1
