@@ -33,3 +33,9 @@ fi
 
 # Partitioning
 source $PWD/Scripts/partition.sh
+
+# Install essential packages
+pacstrap -K /mnt base linux-zen linux-firmware nano intel-ucode
+
+# Generate FSTAB file
+genfstab -U /mnt >> /mnt/etc/fstab
