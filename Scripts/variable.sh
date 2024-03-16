@@ -3,7 +3,7 @@
 set -e
 
 efiPartition="512M"
-swapParttion="4G"
+swapPartition="4G"
 
 partitioning() {
 
