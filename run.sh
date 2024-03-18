@@ -39,3 +39,6 @@ pacstrap -K /mnt base linux-zen linux-firmware nano intel-ucode
 
 # Generate FSTAB file
 genfstab -U /mnt >> /mnt/etc/fstab
+
+# Begin system configuraion
+source $PWD/Scripts/configure.sh
