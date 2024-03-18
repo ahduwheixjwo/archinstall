@@ -3,7 +3,7 @@
 set -e
 
 # Set time zone
-ln -s /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 hwclock --systohc
 
 # Set localization
