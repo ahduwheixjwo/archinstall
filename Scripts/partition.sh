@@ -33,11 +33,11 @@ partitioning
 printf "g\nn\n\n\n+$efiPartition\nn\n\n\n+$swapPartition\nn\n\n\n\nt\n1\n1\nt\n2\n19\nw\n" | fdisk "$disk" >/dev/null 2>&1
 
 # Format all partition
-mkfs.vfat "${disk}1"
-mkswap "${disk}2"
+mkfs.vfat "${disk}1" >/dev/null 2>&1
+mkswap "${disk}2" >/dev/null 2>&1
 mkfs.ext4 "${disk}3"
 
 # Mount partition
 mount "${disk}3" /mnt
 mount --mkdir "${disk}1" /mnt/boot
-swapon "${disk}2"
+swapon "${disk}2" >/dev/null 2>&1
