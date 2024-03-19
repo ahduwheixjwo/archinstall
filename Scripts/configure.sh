@@ -19,7 +19,7 @@ fi
 locale-gen
 echo LANG=$local > /etc/locale.conf
 
-# Hostname
+# Set system hostname
 while true; do
     echo "Enter your preferred hostname"
     read -p ">>" hostname
@@ -32,3 +32,11 @@ while true; do
         break
     fi
 done
+echo "$hostname" > /etc/hostname
+
+# Configuring hostname resolution
+cat << EOF | tee -a /etc/hosts >/dev/null 2>&1
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   "$hostname".localdomain "$hostname"
+EOF
