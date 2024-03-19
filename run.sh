@@ -42,3 +42,4 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Begin system configuraion
 source $PWD/Scripts/configure.sh
+arch-chroot /mnt /bin/bash -c "$(declare -f configure); configure"
