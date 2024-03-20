@@ -34,8 +34,12 @@ fi
 # Partitioning
 source $PWD/Scripts/partition.sh
 
-# Install essential packages
-pacstrap -K /mnt base linux-zen linux-firmware nano intel-ucode
+# Check chipset vendor and install essential packages
+if cat /proc/cpu | grep -q 'Intel'; then
+    pacstrap -K /mnt base linux-zen linux-firmware nano intel-ucode
+else
+    pacstrap -K /mnt base linux-zen linux-firmware nano amd-ucode
+fi
 
 # Generate FSTAB file
 genfstab -U /mnt >> /mnt/etc/fstab
