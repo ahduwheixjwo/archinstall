@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+printf '\033c'
 
 source $PWD/Scripts/variable.sh
 
@@ -24,6 +25,7 @@ while true; do
 done
 
 # Format the disk
+echo "==> Formatting disk"
 printf "x\nz\ny\ny\n" | gdisk "$disk" >/dev/null 2>&1
 
 # Customize each partition size
