@@ -36,7 +36,7 @@ fi
 source $PWD/Scripts/partition.sh
 
 # Check chipset vendor and install essential packages
-if cat /proc/cpu | grep -q 'Intel'; then
+if cat /proc/cpuinfo | grep -q 'Intel'; then
     pacstrap -K /mnt base linux-zen linux-firmware nano intel-ucode
 else
     pacstrap -K /mnt base linux-zen linux-firmware nano amd-ucode
