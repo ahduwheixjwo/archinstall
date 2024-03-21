@@ -41,4 +41,28 @@ configure() {
 ::1         localhost
 127.0.1.1   $hostname.localdomain $hostname
 EOF
+    # Set password
+    passwd
+
+    # Enable multilib for pacman and install required packages
+    sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
+    pacman -Sy grub efibootmgr base-devel git linux-zen-headers networkmanager
+
+    # Set username
+    while true; do
+        echo "Enter your preferred username"
+        read -p ">>" username
+        echo ""
+
+        if [[ -z "$username" ]];then
+            echo "Please enter your preferred username..."
+            echo ""
+        else
+            break
+        fi
+    done
+    useradd -m -G wheel "$username"
+
+    # Set password for username
+    passwd "$username"
 }
