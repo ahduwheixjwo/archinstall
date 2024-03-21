@@ -78,6 +78,4 @@ EOF
     # Enable essential services
     sudo systemctl enable NetworkManager >/dev/null 2>&1
     sudo systemctl enable fstrim.timer >/dev/null 2>&1
-
-
 }
