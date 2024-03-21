@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+printf '\033c'
 
 # Function
 connectInternet() {
