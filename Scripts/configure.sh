@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+printf '\033c'
 
 configure() {
     # Set time zone
@@ -65,4 +66,18 @@ EOF
 
     # Set password for username
     passwd "$username"
+
+    # Uncommenting wheel group
+    echo "%wheel ALL=(ALL:ALL) ALL" | sudo tee /etc/sudoers.d/wheel
+
+    # Install GRUB and update bootloader
+    echo "==> Installing GRUB and updating bootloader..."
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB >/dev/null 2>&1
+    grub-mkconfig -o /boot/grub/grub.cfg
+
+    # Enable essential services
+    sudo systemctl enable NetworkManager >/dev/null 2>&1
+    sudo systemctl enable fstrim.timer >/dev/null 2>&1
+
+
 }
