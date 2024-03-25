@@ -6,6 +6,7 @@ bsdtar -xvf archinstall.zip
 ```
 - On the Arch linux live-ISO
 ```
+cd $HOME/archinstall-master
 chmod +x run.sh
 ./run.sh
 ```
