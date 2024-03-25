@@ -1,4 +1,4 @@
-**Installation & Usage**
+# Installation & Usage**
 - Copy the files
 ```
 curl -L -o archinstall.zip https://github.com/ahduwheixjwo/archinstall/archive/master.zip
